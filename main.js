@@ -1,14 +1,13 @@
 $(function() {
-    $('#btn1').click(function(){
-        var id = $('#text1').val();
-        $.getJSON('data.php', {'id':id}, function(response, status, xhr){
-            var ol = $('<ul></ul>');
-            ol.append('<li>姓名：' + response.name + '</li>');
-            ol.append('<li>電郵信箱：' + response.mail + '</li>');
-            ol.append('<li>電話號碼：' + response.tel + '</li>');
-            $('#msg').empty().append(ol);
-        });
-    });
+	$('#btn1').click(function(){
+		$.get('data.txt', function(response){
+			var ol = $('<ol></ol>');
+			var arr = response.split('');
+			for(var item in arr){
+				ol.append('<span>'+"➳"+ arr[item] +"➳"+'</span>'+'<br>');
+			}
+			$('#msg').append(ol);
+		});
+	});
 });
-
 
